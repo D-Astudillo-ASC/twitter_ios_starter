@@ -28,10 +28,10 @@ class LoginViewController: UIViewController {
         }
     }
     func continueLogin(){
-        UserDefaults.standard.set(true, forKey: "userLoggedIn")
         let myUrl = "https://api.twitter.com/oauth/request_token"
         TwitterAPICaller.client?.login(url: myUrl, success: {
             self.performSegue(withIdentifier: "loginToHome", sender: self)
+            UserDefaults.standard.set(true, forKey: "userLoggedIn")
         }, failure: { (Error) in
             print("could not login:")}
         )
